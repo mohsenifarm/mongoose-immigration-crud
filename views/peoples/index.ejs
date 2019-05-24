@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>IMMIGRATION</title>
+  <!-- Google Icon Fonts used by Materialize -->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="stylesheets/style.css" />
+  <!-- JavaScript for Materialize -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper">
+                    <ul class="right">
+                        <li> 
+                            <%if (user) {%>
+                                <a href="/logout">LOG OUT</a>
+                                <h3>hi</h3>
+
+                                <%} else {%>
+                                <a href="/auth/google">Login</a>
+                             <%}%>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <%if(user) {%>
+            <div class="yek">
+        <a href="/visitors">VISITORS</a>
+        <br>
+        <br>
+        <br>
+        <a href="/immigrant">IMMIGRANTS</a>
+    </div>
+        <%}%>
+</body>
+</html>
