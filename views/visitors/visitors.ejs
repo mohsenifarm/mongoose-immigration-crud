@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>IMMIGRATION</title>
+  <!-- Google Icon Fonts used by Materialize -->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="stylesheets/style.css" />
+  <!-- JavaScript for Materialize -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+        <div class="text">
+                <a href="/peoples">HOME</a>
+            <form action="/visitors" method="POST">
+            <input required class="title" type="text" name="title" placeholder="TITLE : ">
+            <textarea required name="content" id="" cols="50" rows="500"></textarea>
+            <button type="submit">SUBMIT</button>
+            </form>
+        </div>
+        <h2 class="ttv"><em>Posts</em></h2>
+        <% visitors.forEach(function(v) {%>
+            <div class="visitor-content">
+        <h4 class="a1"><%=v.title%></h4>
+        <p class="a2"><%=v.content%>
+            <p><%=v.comment%></p> 
+        </p>
+        <form action="/visitors/<%=v._id%>" method="POST">
+        <input type="submit" value="X">
+        </form>
+        <form action="/visitors/<%=v._id%>/comment" method="POST">
+            <br>
+            <div>
+            <textarea name="comment" id="comment" cols="20" rows="10" placeholder="comment"></textarea>
+            <br>
+            <input type="submit" value="ADD COMMENT">
+        </div>
+        </form>
+    </div>
+        <%});%>
+
+    </div>
+
+
+        
+</body>
+</html>
