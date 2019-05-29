@@ -9,7 +9,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: process.env.GOOGLE_CALLBACK
+      callbackURL: "https://payamcrud.herokuapp.com/oauth2callback"
     },
     function(accessToken, refreshToken, profile, cb) {
       People.findOne({ googleId: profile.id }, function(err, people) {
@@ -31,9 +31,6 @@ passport.use(
     }
   )
 );
-
-
-
 
 passport.serializeUser(function(people, cb) {
   cb(null, people.id);
