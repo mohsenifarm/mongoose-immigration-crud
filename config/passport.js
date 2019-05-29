@@ -32,6 +32,9 @@ passport.use(
   )
 );
 
+
+
+
 passport.serializeUser(function(people, cb) {
   cb(null, people.id);
 });

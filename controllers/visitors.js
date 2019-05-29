@@ -5,7 +5,8 @@ module.exports = {
   new: newVisitor,
   index,
   delete: deleteOne,
-  // update
+  update,
+  indexEdit
 };
 function create(req, res) {
   var visitor = new Visitor(req.body);
@@ -22,7 +23,7 @@ function newVisitor(req, res) {
 function index(req, res) {
   Visitor.find({}, function(err, visitors) {
     // console.log();
-    console.log(visitors);
+    // console.log(visitors[0]);
     if (err) res.render("/visitors");
     res.render("visitors/visitors", { visitors });
   });
@@ -30,7 +31,7 @@ function index(req, res) {
 function deleteOne(req, res) {
   // console.log("************");
   Visitor.findByIdAndDelete({ _id: req.params.id }, function(err, visitor) {
-    console.log(visitor)
+    // console.log(visitor)
     visitor.save(function(err) {
       if (err) redirect("back");
     });
@@ -38,6 +39,9 @@ function deleteOne(req, res) {
   });
 }
 
+function indexEdit(req, res) {
+  res.render("visitors/edit");
+}
 // function update(req, res) {
 //   Visitor.findByIdAndUpdate({ _id: req.params.id }, function(err, visitors) {
 //     if (err) redirect("back");
@@ -47,3 +51,12 @@ function deleteOne(req, res) {
 //     res.redirect("back");
 //   });
 // }
+function update(req, res) {
+  Visitor.findById({ _id: req.params.id }, function(err, visitors) {
+    visitors.content = req.body.editContent;
+    visitors.save(function(err) {
+      if (err) res.redirect("back");
+    });
+    res.redirect("back");
+  });
+}

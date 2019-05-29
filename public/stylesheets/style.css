@@ -1,3 +1,8 @@
+.index-people {
+  /* background-image: url('/images/tourism-bussines-2.jpg'); */
+  /* background-size: cover; */
+  background-size: 200vh 100vh;
+}
 .brand-logo {
   margin-left: 15px;
 }
@@ -65,3 +70,16 @@ textarea { resize: vertical; }
   max-height: 50px;
 }
 textarea { resize: vertical; }
+ #atag {
+   font-size: 30px;
+   margin-left: 120px;
+ }
+ .yek {
+   display: flex;
+ }
+ .a2 {
+   border-bottom: 1px dashed red;
+ }
+ .btn-delete {
+   border-radius: 50%;
+ }
