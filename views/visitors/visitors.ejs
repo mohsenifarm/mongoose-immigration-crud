@@ -12,68 +12,81 @@
   <!-- JavaScript for Materialize -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
-<body>
+<body class="vis-body">
         <nav class="navbar navbar-dark bg-dark">
                 <a href="/peoples">HOME</a>
               </nav>
+             
 
-
-
+<div class="visitors-body">
         <div class="text">
-                <h2 class="ttv"><em>Posts</em></h2>
+                
                 
             <form action="/visitors" method="POST">
-                <div>
-                    <label>Title:
-            <input required class="title" type="text" name="title">
-                    </label>
+                <div class="one">
+                 
+            <input required class="title" type="text" name="title" placeholder="Title:">
+                  
                 </div>
-                <label>Post Contetnt:
-            <textarea required name="content" id="" cols="50" rows="5"></textarea>
+                <br>
+                <div class="tow">
+                <label>
+            <textarea required name="content" id="textarea" cols="50" rows="5">post:</textarea>
                 </label>
+            </div>
             <div>
             <button type="submit">SUBMIT</button>
             </div>
             </form>
         </div>
-        <br>
+        <h2 class="ttv"><em>
+                <span class="span1">P</span>
+                <span class="span2">O</span>
+                <span class="span3">S</span>
+                <span class="span4">T</span>
+                <span class="span5">S</span>
+          </em></h2>
         
         <% visitors.forEach(function(v) {%>
             <div class="visitor-content">
-                    <form action="/visitors/<%=v._id%>/edit" method="POST">
-                        <div>
-                            <label>Edit Post Content:
-                    <input type="text" name="editContent" placeholder="Edit here: ">
-                            </label>
-                    <button><img src="/images/pencil-edit-button.png" alt="Edit post"></button>
-                        </div>
-                        <br>
-                        <br>
-                    
-                </form>
-
-
-
-
-                    <form action="/visitors/<%=v._id%>" method="POST">
-                        <div>
-                            <label>Delete Post=>
-                       <button><img src="/images/delete.png" alt="delete post"></button>
-                    </label>
-                        </div>
-                        </form>
-                        
-        <h3 class="a1"><%=v.title%></h3>
+             
+<div class="text2">                       
+        <h4 class="a1"><%=v.title%></h4>
         <p class="a2"><%=v.content%></p>
+
+
+        <form action="/visitors/<%=v._id%>" method="POST">
+            <div>
+                <label>
+           <button><img src="/images/delete.png" alt="delete post">Post</button>
+        </label>
+            </div>
+            </form>
+
+        <form action="/visitors/<%=v._id%>/edit" method="POST">
+            <div class="three">
+                <label>
+        <input type="text" name="editContent" placeholder="Edit Post Content: ">
+                </label>
+        <button><img src="/images/pencil-edit-button.png" alt="Edit post"></button>
+            </div>
+            <br>
+            <br>
+        
+    </form>
+
+</div> 
+<div class="text3">
         <%v.comment.forEach(function(c){%>
             <p><%=c.comment%></p>
             <form action="/visitors/<%=v._id%>/<%=c.id%>/delete" method="POST">
-            <button class="btn-delete" type="submit"><img src="/images/delete (1).png" alt=""></button>
+            <button class="btn-delete" type="submit"><img src="/images/delete (1).png" alt="">Comment</button>
             </form>
+            
             <%});%>
         
        
-
+            
 
         <form action="/visitors/<%=v._id%>/comment" method="POST">
             <br>
@@ -88,6 +101,9 @@
         <p><%=i%></p>
         <%})%> -->
     </div>
+</div>
+<div class="between"><<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>></div>
+
         <%});%>
 
     </div>

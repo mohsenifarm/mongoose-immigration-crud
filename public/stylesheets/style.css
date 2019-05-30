@@ -1,6 +1,5 @@
-.index-people {
-  /* background-image: url('/images/tourism-bussines-2.jpg'); */
-  /* background-size: cover; */
+/* .index-people {
+  background-image: url('/images/tourism-bussines-2.jpg');
   background-size: 200vh 100vh;
 }
 .brand-logo {
@@ -35,14 +34,14 @@
 .text {
   margin-top: 10%;
   display: grid;
-  /* margin-left: 2%; */
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 form input.title {
   border: 2px solid gray;
-  height: 10px;;
+  height: 40px;
+  width: 400px;
 }
 ::placeholder {
   color: blue;
@@ -51,9 +50,6 @@ textarea { resize: vertical; }
 
 .visitor-content {
   display: grid;
-  /* align-content: center; */
-  /* justify-content: center; */
-  /* text-align: center; */
   padding-left: 10%; 
   border-bottom: 2px solid gray;
 }
@@ -63,7 +59,6 @@ textarea { resize: vertical; }
 
 .ttv {
   text-align: center;
-  /* padding-left: 30%; */
 }
 #comment {
   width: 250px;
@@ -82,4 +77,91 @@ textarea { resize: vertical; }
  }
  .btn-delete {
    border-radius: 50%;
+ } */
+
+ body {
+   background-color: bisque;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   background-size: cover;
  }
+ h2 {
+   font-size: 50px;
+   background-color: black;
+ }
+
+ .span1{
+  color: wheat;
+ }
+ .span2{
+  color: red;
+ }
+ .span3{
+  color: yellow;
+ }
+ .span4{
+  color: pink;
+ }
+ .span5{
+  color: powderblue;
+ }
+
+ .vis-body {
+   background-image: url('http://www.4usky.com/data/out/43/164372963-hexagon-wallpapers.jpg');
+   background-image: url('https://i.imgur.com/3kUVDuo.png');
+ }
+.visitors-body {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#comment {
+  height: 30px;
+  width: 320px;
+}
+
+
+.text  {
+  background-color: rgba(109,156,159,.2);
+  margin: 7%;
+  border-radius: 10%;
+
+}
+.text2 {
+  background-color: rgba(109,156,159,.2);
+  margin: 7%;
+  border-radius: 10%;
+  padding: 20px;
+}
+.text3 {
+  padding: 20px;
+  background-color: rgba(109,156,159,.2);
+  margin: 7%;
+  border-radius: 10%;
+
+
+}
+p,h4 {
+  color: white;
+}
+.between{
+  color: white;
+}
+
+
+.index-people {
+  background-image: url('https://previews.123rf.com/images/ramcreative/ramcreative1503/ramcreative150300008/38068369-travel-and-tourism-background-in-flat-style.jpg');
+  /* background-size: cover; */
+  background-size: 200vh 100vh;
+}
+
+#connect {
+  font-size: 48px;
+  color: red;
+}
+#textarea {
+  height: 50px;
+  border: none;
+}

@@ -19,12 +19,14 @@
                     <a href="/logout">LOG OUT</a>
                     <%} else {%>
                         <h4>
-                            Pleasw login to visit page
+                            Login to visit page
                         </h4>
                         <a href="/auth/google">Login</a> 
                         <%}%>
-                    <a href="/visitors">VISITORS</a>
                         
               </nav>
+              <%if(user){%>
+                <a id="connect" href="/visitors">SEE POSTS</a>
+                <%}%>
 </body>
 </html>
