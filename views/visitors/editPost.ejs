@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit</h1>
+    <%=visitor.user.name%>
+    <%=visitor.title%>
+    <%=visitor.content%>
+    <form action="/visitors/<%=visitor._id%>/edit" method="POST">
+        <div class="three">
+            <label>
+    <input required type="text" name="editContent" placeholder="Edit Post Content: ">
+            </label>
+    <button><img src="/images/pencil-edit-button.png" alt="Edit post"></button>
+        </div>
+        <br>
+        <br>
+    
+</form>
+</body>
+</html>

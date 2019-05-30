@@ -15,7 +15,7 @@ require("./config/passport");
 var indexRouter = require("./routes/index");
 var peoplesRouter = require("./routes/peoples");
 var commentsRouter = require("./routes/comments");
-
+var visitorsRouter = require('./routes/visitors');
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -38,9 +38,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", indexRouter);
-app.use("/", peoplesRouter);
+app.use("/peoples", peoplesRouter);
 app.use("/", commentsRouter);
-
+app.use('/visitors', visitorsRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

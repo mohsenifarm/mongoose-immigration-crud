@@ -16,22 +16,17 @@
         <nav class="navbar navbar-dark bg-dark">
                 <a href="/peoples">HOME</a>
               </nav>
-             
-
 <div class="visitors-body">
-        <div class="text">
-                
-                
+        <div class="text">   
             <form action="/visitors" method="POST">
                 <div class="one">
-                 
             <input required class="title" type="text" name="title" placeholder="Title:">
                   
                 </div>
                 <br>
                 <div class="tow">
                 <label>
-            <textarea required name="content" id="textarea" cols="50" rows="5">post:</textarea>
+            <textarea required name="content" id="textarea" cols="50" rows="5" placeholder="post:"></textarea>
                 </label>
             </div>
             <div>
@@ -46,8 +41,7 @@
                 <span class="span4">T</span>
                 <span class="span5">S</span>
           </em></h2>
-        
-        <% visitors.forEach(function(v) {%>
+        <% visitors.reverse().forEach(function(v) {%>
             <div class="visitor-content">
              
 <div class="text2">      
@@ -66,17 +60,8 @@
             </div>
             </form>
                 <%if(user.id === v.user.id){%>
-        <form action="/visitors/<%=v._id%>/edit" method="POST">
-            <div class="three">
-                <label>
-        <input type="text" name="editContent" placeholder="Edit Post Content: ">
-                </label>
-        <button><img src="/images/pencil-edit-button.png" alt="Edit post"></button>
-            </div>
-            <br>
-            <br>
-        
-    </form>
+                    <a href="/visitors/<%=v._id%>">Edit Post</a>
+       
     <%}%>
 
 </div> 
@@ -112,12 +97,7 @@
     </div>
 </div>
 <div class="between"><<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>></div>
-
         <%});%>
-
     </div>
-
-
-        
 </body>
 </html>

@@ -7,8 +7,15 @@ module.exports = {
   index,
   delete: deleteOne,
   update,
-  indexEdit
+  indexEdit,
+  getPost
 };
+function getPost(req, res){
+  Visitor.findById(req.params.id).populate('user').exec( (err, visitor) => {
+    console.log('visitor: ', visitor)
+    res.render('visitors/editPost', {visitor})
+  })
+}
 function create(req, res) {
   var visitor = new Visitor(req.body);
   console.log("req.user: ", req.user);
@@ -65,6 +72,6 @@ function update(req, res) {
     visitors.save(function(err) {
       if (err) res.redirect("back");
     });
-    res.redirect("back");
+    res.redirect("/visitors");
   });
 }
