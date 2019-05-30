@@ -4,19 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
 </head>
-<body>
+<body class="editejs">
+        <nav class="navbar navbar-dark bg-dark">
+                <a href="/peoples">HOME</a>
+                <a href="/visitors">Visitors</a>
+              </nav>
+              <br>
     <h1>Edit</h1>
+    <label><span class="aaa"> name : </span class="aaa">
     <%=visitor.user.name%>
+</label>
+<br>
+<label><span class="aaa"> Title : </span>
     <%=visitor.title%>
+</label>
+<br>
+<label><span class="aaa"> Post : </span>
     <%=visitor.content%>
+</label>
+<br>
+<br>
     <form action="/visitors/<%=visitor._id%>/edit" method="POST">
         <div class="three">
+            <input type="text" name="edittitle" placeholder="Edit title">
+            <br>
+            <br>
             <label>
+                
     <input required type="text" name="editContent" placeholder="Edit Post Content: ">
             </label>
-    <button><img src="/images/pencil-edit-button.png" alt="Edit post"></button>
+            <br>
+            <br>
+    <button><img src="/images/pencil-edit-button.png" alt="Edit post">Click to Edit</button>
         </div>
         <br>
         <br>

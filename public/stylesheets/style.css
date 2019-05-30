@@ -165,3 +165,12 @@ p,h4 {
   height: 50px;
   border: none;
 }
+
+.aaa {
+  font-size: 20px;
+  font-weight: bold;
+}
+.editejs{
+  background-image: url('https://ui-ex.com/images/pencil-transparent-1.png');
+  background-size: 170vh 100vh;
+}

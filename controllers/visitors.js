@@ -68,6 +68,7 @@ function indexEdit(req, res) {
 // }
 function update(req, res) {
   Visitor.findById({ _id: req.params.id }, function(err, visitors) {
+    visitors.title = req.body.edittitle;
     visitors.content = req.body.editContent;
     visitors.save(function(err) {
       if (err) res.redirect("back");

@@ -54,13 +54,13 @@
             <div>
                 <label>
                     <%if(user.id === v.user.id){%>
-           <button><img src="/images/delete.png" alt="delete post">Delete Post</button>
+           <button><img src="/images/delete.png" alt="delete post">Post</button>
            <%}%>
         </label>
             </div>
             </form>
                 <%if(user.id === v.user.id){%>
-                    <a href="/visitors/<%=v._id%>">Edit Post</a>
+                    <a href="/visitors/<%=v._id%>"><img src="/images/pencil-edit-button.png" alt="">Post</a>
        
     <%}%>
 
