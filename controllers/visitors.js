@@ -1,4 +1,5 @@
 var Visitor = require("../models/visitor");
+var People = require("../models/people");
 
 module.exports = {
   create,
@@ -10,10 +11,18 @@ module.exports = {
 };
 function create(req, res) {
   var visitor = new Visitor(req.body);
+  console.log("req.user: ", req.user);
+  visitor.user = req.user.id;
+  People.findById(req.user.id, function(err, people) {
+    console.log("people: ", people);
+    people.posts.push(visitor.id);
+    people.save();
+  });
   visitor.save(function(err) {
     if (err) res.render("visitors/visitors");
-    res.redirect("back");
+    console.log("visitor: ", visitor);
   });
+  res.redirect("back");
 }
 
 function newVisitor(req, res) {
@@ -21,12 +30,11 @@ function newVisitor(req, res) {
 }
 
 function index(req, res) {
-  Visitor.find({}, function(err, visitors) {
-    // console.log();
-    // console.log(visitors[0]);
-    if (err) res.render("/visitors");
-    res.render("visitors/visitors", { visitors });
-  });
+  Visitor.find({})
+    .populate('comment.user').populate('user')
+    .exec( (err, visitors) => {
+      res.render("visitors/visitors", {visitors, user: req.user});
+    });
 }
 function deleteOne(req, res) {
   // console.log("************");

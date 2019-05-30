@@ -50,7 +50,8 @@
         <% visitors.forEach(function(v) {%>
             <div class="visitor-content">
              
-<div class="text2">                       
+<div class="text2">      
+        <h3><%=v.user.name%></h3>                 
         <h4 class="a1"><%=v.title%></h4>
         <p class="a2"><%=v.content%></p>
 
@@ -58,11 +59,13 @@
         <form action="/visitors/<%=v._id%>" method="POST">
             <div>
                 <label>
-           <button><img src="/images/delete.png" alt="delete post">Post</button>
+                    <%if(user.id === v.user.id){%>
+           <button><img src="/images/delete.png" alt="delete post">Delete Post</button>
+           <%}%>
         </label>
             </div>
             </form>
-
+                <%if(user.id === v.user.id){%>
         <form action="/visitors/<%=v._id%>/edit" method="POST">
             <div class="three">
                 <label>
@@ -74,14 +77,20 @@
             <br>
         
     </form>
+    <%}%>
 
 </div> 
 <div class="text3">
         <%v.comment.forEach(function(c){%>
-            <p><%=c.comment%></p>
+            <!-- <p><%=c.comment%></p> -->
+            <%if(user.id === c.user.id){%>
             <form action="/visitors/<%=v._id%>/<%=c.id%>/delete" method="POST">
-            <button class="btn-delete" type="submit"><img src="/images/delete (1).png" alt="">Comment</button>
+            <button class="btn-delete" type="submit"><img src="/images/delete (1).png" alt=""></button>
             </form>
+            <%}%>
+            <p>
+            <span><%=c.user.name%> :</span> <%=c.comment%>
+        </p>
             
             <%});%>
         

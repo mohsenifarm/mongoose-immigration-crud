@@ -7,8 +7,8 @@ var visitorsCtrl = require("../controllers/visitors");
 
 router.get("/peoples", peoplesCtrl.index);
 
-router.get("/visitors", visitorsCtrl.index);
-router.post("/visitors", visitorsCtrl.create);
+router.get("/visitors", isLoggedIn, visitorsCtrl.index);
+router.post("/visitors", isLoggedIn, visitorsCtrl.create);
 router.get("/visitors", visitorsCtrl.new);
 router.post("/visitors/:id", visitorsCtrl.delete);
 router.post("/visitors/:id/edit", visitorsCtrl.update);

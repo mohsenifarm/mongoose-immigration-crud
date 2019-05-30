@@ -14,12 +14,13 @@ passport.use(
     },
     function(accessToken, refreshToken, profile, cb) {
       People.findOne({ googleId: profile.id }, function(err, people) {
+        console.log('profile: ', profile)
         if (err) return cb(err);
         if (people) {
           return cb(null, people);
         } else {
           var newPeople = new People({
-            neme: profile.displayName,
+            name: profile.displayName,
             email: profile.emails[0].value,
             googleId: profile.id
           });

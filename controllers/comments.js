@@ -6,8 +6,9 @@ module.exports = {
 };
 
 function create(req, res) {
+  console.log('req.user: ', req.user)
   Visitor.findById(req.params.id, function(err, visitors) {
-    visitors.comment.unshift({ comment: req.body.comment });
+    visitors.comment.unshift({ comment: req.body.comment, user: req.user.id });
     visitors.save(function(err) {
       if (err) res.render("visitors/visitors");
       res.redirect(`back`);
