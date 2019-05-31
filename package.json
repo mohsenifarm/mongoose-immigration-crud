@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap4": "0.0.1-security",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.0.0",
@@ -18,5 +20,8 @@
     "nodemon": "^1.19.1",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.2"
   }
 }

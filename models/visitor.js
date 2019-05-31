@@ -16,6 +16,10 @@ var visitorsSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'People'
+    },
+    category:{
+       type:String,
+       enum:['lottery','business','tourist','student','family','job']
     }
 })
 

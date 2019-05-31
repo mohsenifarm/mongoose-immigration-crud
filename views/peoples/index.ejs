@@ -9,24 +9,69 @@
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="stylesheets/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
   <!-- JavaScript for Materialize -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body class="index-people">
         <nav class=" index navbar navbar-dark bg-dark">
                 <%if (user) {%>
-                    <a href="/visitors">VISITORS</a>
-                    <a href="/logout">LOG OUT</a>
+                  <a href="/visitors/lottery">Lottery</a>
+                  <a href="/visitors/business">Business</a>
+                  <a href="/visitors/tourist">Tourist</a>
+                  <a href="/visitors/student">Student</a>
+                  <a href="/visitors/job">Job</a>
+                  <a href="/visitors/family">Family</a>
+                    <a href="/logout"><i class="fas fa-sign-out-alt"></i> LOG OUT</a>
                     <%} else {%>
                         <h4>
                             Login to visit page
                         </h4>
-                        <a href="/auth/google">Login</a> 
+                        <a href="/auth/google"><i class="fas fa-sign-in-alt"></i> Login</a> 
                         <%}%>
                         
               </nav>
               <%if(user){%>
-                <a id="connect" href="/visitors">SEE POSTS</a>
+                <h1 class="h1"><em><i class="fas fa-globe-americas"></i> Immigration</em></h1>
+                
+
+
+                <form action="/visitors" method="POST" id="home-form">
+
+                  
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Visa Category</label>
+                      </div>
+                      <select name="category" class="custom-select" id="inputGroupSelect01">
+                        <option selected>Choose...</option>
+                        <option value="lottery">Lottery</option>
+                    <option value="business">Business</option>
+                    <option value="student">Student</option>
+                    <option value="family">Family</option>
+                    <option value="tourist">Tourist</option>
+                    <option value="job">Job</option>
+                      </select>
+                    </div>
+                    
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Post Subject</span>
+                      </div>
+                      <input name="title" required type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Content</span>
+                      </div>
+                      <textarea required name="content" class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+                  <button type="submit" style="margin-top: 20px" class="btn btn-outline-dark">Submit</button>
+                </form>
                 <%}%>
+                
 </body>
 </html>

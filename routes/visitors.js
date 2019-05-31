@@ -2,12 +2,12 @@ var router = require("express").Router();
 var visitorsCtrl = require("../controllers/visitors");
 
 
-router.get("/", isLoggedIn, visitorsCtrl.index);
+router.get("/:category", isLoggedIn, visitorsCtrl.index);
+router.get('/edit/:id', isLoggedIn, visitorsCtrl.getPost);
 router.post("/", isLoggedIn, visitorsCtrl.create);
 router.get("/", visitorsCtrl.new);
 router.post("/:id", visitorsCtrl.delete);
-router.post("/:id/edit", visitorsCtrl.update);
-router.get('/:id', isLoggedIn, visitorsCtrl.getPost);
+router.post("/edit/:id", visitorsCtrl.update);
 
 
 

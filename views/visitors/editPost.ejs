@@ -8,44 +8,35 @@
     <title>Edit Post</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/style.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body class="editejs">
         <nav class="navbar navbar-dark bg-dark">
-                <a href="/peoples">HOME</a>
-                <a href="/visitors">Visitors</a>
+                <a href="/peoples"><i class="fas fa-home"></i> HOME</a>
               </nav>
-              <br>
-    <h1>Edit</h1>
-    <label><span class="aaa"> name : </span class="aaa">
-    <%=visitor.user.name%>
-</label>
-<br>
-<label><span class="aaa"> Title : </span>
+    <h1>Edit <%= visitor.title %></h1>
+<h5><span class="badge badge-secondary">Title</span>
     <%=visitor.title%>
-</label>
-<br>
-<label><span class="aaa"> Post : </span>
+</h5>
+<h5><span class="badge badge-secondary">Content</span>
     <%=visitor.content%>
-</label>
-<br>
-<br>
-    <form action="/visitors/<%=visitor._id%>/edit" method="POST">
-        <div class="three">
-            <input type="text" name="edittitle" placeholder="Edit title">
-            <br>
-            <br>
-            <label>
-                
-    <input required type="text" name="editContent" placeholder="Edit Post Content: ">
-            </label>
-            <br>
-            <br>
-    <button><img src="/images/pencil-edit-button.png" alt="Edit post">Click to Edit</button>
+</h5>
+
+    <form style='width: 60%; margin: 0 auto;' action="/visitors/edit/<%=visitor._id%>" method="POST">
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Title</span>
+                </div>
+                <input type="text" class="form-control" name='edittitle'>
         </div>
-        <br>
-        <br>
-    
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Content</span>
+            </div>
+            <textarea name="editContent"  class="form-control" aria-label="With textarea"></textarea>
+        </div>
+        <button class='btn btn-outline-dark' style="margin-top: 20px;"><i class="fas fa-edit"></i> Submit</button>
+              
 </form>
 </body>
 </html>

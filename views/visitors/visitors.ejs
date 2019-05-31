@@ -8,96 +8,83 @@
   <!-- Materialize CSS Framework -->
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <!-- JavaScript for Materialize -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body class="vis-body">
         <nav class="navbar navbar-dark bg-dark">
-                <a href="/peoples">HOME</a>
+                <a href="/peoples"><i class="fas fa-home"></i> HOME</a>
               </nav>
 <div class="visitors-body">
-        <div class="text">   
-            <form action="/visitors" method="POST">
-                <div class="one">
-            <input required class="title" type="text" name="title" placeholder="Title:">
-                  
-                </div>
-                <br>
-                <div class="tow">
-                <label>
-            <textarea required name="content" id="textarea" cols="50" rows="5" placeholder="post:"></textarea>
-                </label>
-            </div>
-            <div>
-            <button type="submit">SUBMIT</button>
-            </div>
-            </form>
-        </div>
-        <h2 class="ttv"><em>
-                <span class="span1">P</span>
+       
+        <h4 class="ttv"><em>
+                <span class="badge badge-success">Welcome <%=user.name%></span>
+                <!-- <span class="span1">P</span>
                 <span class="span2">O</span>
                 <span class="span3">S</span>
                 <span class="span4">T</span>
-                <span class="span5">S</span>
-          </em></h2>
+                <span class="span5">S</span> -->
+          </em></h4>
         <% visitors.reverse().forEach(function(v) {%>
-            <div class="visitor-content">
-             
-<div class="text2">      
-        <h3><%=v.user.name%></h3>                 
-        <h4 class="a1"><%=v.title%></h4>
-        <p class="a2"><%=v.content%></p>
-
-
-        <form action="/visitors/<%=v._id%>" method="POST">
-            <div>
-                <label>
+        <div class="visitor-content">
+            <div class="text2">   
+                <div style='display: flex; justify-content: space-between;'>
+                    <h6 style='margin-top: 6px;'><span class="badge badge-dark"><%=v.user.name%></span></h6>                 
                     <%if(user.id === v.user.id){%>
-           <button><img src="/images/delete.png" alt="delete post">Post</button>
-           <%}%>
-        </label>
-            </div>
-            </form>
-                <%if(user.id === v.user.id){%>
-                    <a href="/visitors/<%=v._id%>"><img src="/images/pencil-edit-button.png" alt="">Post</a>
-       
-    <%}%>
-
-</div> 
-<div class="text3">
-        <%v.comment.forEach(function(c){%>
-            <!-- <p><%=c.comment%></p> -->
-            <%if(user.id === c.user.id){%>
-            <form action="/visitors/<%=v._id%>/<%=c.id%>/delete" method="POST">
-            <button class="btn-delete" type="submit"><img src="/images/delete (1).png" alt=""></button>
-            </form>
-            <%}%>
-            <p>
-            <span><%=c.user.name%> :</span> <%=c.comment%>
-        </p>
+                        <div class="dropdown">
+                                <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Edit Post
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <form action="/visitors/<%=v._id%>" method="POST">
+                                            <div>
+                                                <label>
+                                                
+                                                    <button style='background-color: white; border: none;'><i class="far fa-trash-alt"></i> Delete Post</button>
+                                                
+                                                </label>
+                                            </div>
+                                        </form>
+                                        <a href="/visitors/edit/<%=v._id%>" style="color: black;">&nbsp;&nbsp;<i class="far fa-edit"></i> Edit Post</a>
+                                </div>
+                            </div>
+                            <%}%>
+                </div>   
+                <h6 class="a1"><%=v.title%></h6>
+                <p style='color: black;' class="a2"><%=v.content%></p>
+                
             
-            <%});%>
-        
-       
-            
-
-        <form action="/visitors/<%=v._id%>/comment" method="POST">
-            <br>
-            <div>
-            <textarea name="comment" id="comment" cols="20" rows="10" placeholder="comment"></textarea>
-            <br>
-            <input type="submit" value="ADD COMMENT">
+               
+                <%v.comment.forEach(function(c){%>
+                    <!-- <p><%=c.comment%></p> -->
+                   <div style="display: flex; justify-content: space-between;">
+                        <p style="color: black;">
+                            <span style='font-weight: 900'><%=c.user.name%>:</span>  <%=c.comment%>
+                        </p>  
+                        <%if(user.id === c.user.id){%>
+                       
+                            <form action="/visitors/<%=v._id%>/<%=c.id%>/delete" method="POST">
+                                <button class="btn btn-sm btn-outline-danger" type="submit"><i class="far fa-trash-alt"></i> delete</button>
+                            </form>
+                        <%}%>
+                    </div>
+                <%});%>
+                <form action="/visitors/<%=v._id%>/comment" method="POST">
+                    <div class="input-group mb-3">
+                            <input name='comment' type="text" class="form-control" placeholder="Comment..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-success" type="submit"><i class="fas fa-comments"></i> Submit</button>
+                            </div>
+                    </div>
+                </form>
+            </div> 
         </div>
-        </form>
-       <!-- <% visitors.forEach(function(vis, i){%>
-        <p><%#=vis.comment[2].comment%></p>
-        <p><%=i%></p>
-        <%})%> -->
-    </div>
-</div>
-<div class="between"><<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>></div>
         <%});%>
-    </div>
+        
 </body>
 </html>

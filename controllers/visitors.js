@@ -10,26 +10,31 @@ module.exports = {
   indexEdit,
   getPost
 };
-function getPost(req, res){
-  Visitor.findById(req.params.id).populate('user').exec( (err, visitor) => {
-    console.log('visitor: ', visitor)
-    res.render('visitors/editPost', {visitor})
-  })
+function getPost(req, res) {
+  console.log('inside the right function')
+  Visitor.findById(req.params.id)
+    .populate("user")
+    .exec((err, visitor) => {
+      console.log("visitor: ", visitor);
+      res.render("visitors/editPost", { visitor });
+    });
 }
+
 function create(req, res) {
   var visitor = new Visitor(req.body);
-  console.log("req.user: ", req.user);
   visitor.user = req.user.id;
   People.findById(req.user.id, function(err, people) {
-    console.log("people: ", people);
     people.posts.push(visitor.id);
     people.save();
   });
   visitor.save(function(err) {
-    if (err) res.render("visitors/visitors");
-    console.log("visitor: ", visitor);
+    if (err) res.render("categories/categories");
   });
-  res.redirect("back");
+  // let category = new Category;
+  // category.post = visitor;
+  // category.name = req.body.category;
+  // category.save();
+  res.redirect(`/visitors/${req.body.category}`);
 }
 
 function newVisitor(req, res) {
@@ -37,10 +42,11 @@ function newVisitor(req, res) {
 }
 
 function index(req, res) {
-  Visitor.find({})
-    .populate('comment.user').populate('user')
-    .exec( (err, visitors) => {
-      res.render("visitors/visitors", {visitors, user: req.user});
+  Visitor.find({category: req.params.category})
+    .populate("comment.user")
+    .populate("user")
+    .exec((err, visitors) => {
+      res.render("visitors/visitors", { visitors, user: req.user });
     });
 }
 function deleteOne(req, res) {
@@ -53,7 +59,6 @@ function deleteOne(req, res) {
     res.redirect("back");
   });
 }
-
 function indexEdit(req, res) {
   res.render("visitors/edit");
 }
@@ -73,6 +78,6 @@ function update(req, res) {
     visitors.save(function(err) {
       if (err) res.redirect("back");
     });
-    res.redirect("/visitors");
+    res.redirect(`/visitors/${visitors.category}`);
   });
 }
