@@ -26,14 +26,14 @@
                     <a href="/logout"><i class="fas fa-sign-out-alt"></i> LOG OUT</a>
                     <%} else {%>
                         <h4>
-                            Login to visit page
+                            <em>I M M I G R A T I <i class="fas fa-globe-americas"></i> N</em>
                         </h4>
                         <a href="/auth/google"><i class="fas fa-sign-in-alt"></i> Login</a> 
                         <%}%>
                         
               </nav>
               <%if(user){%>
-                <h1 class="h1"><em><i class="fas fa-globe-americas"></i> Immigration</em></h1>
+                <h1 class="h1"><em>I M M I G R A T I <i class="fas fa-globe-americas"></i> N</em></h1>
                 
 
 
@@ -72,6 +72,10 @@
                   <button type="submit" style="margin-top: 20px" class="btn btn-outline-dark">Submit</button>
                 </form>
                 <%}%>
+                <%if(!user){%>
+                  <h1 class="h1"><em>I M M I G R A T I <i class="fas fa-globe-americas"></i> N</em></h1>
+                  <p style='color: black; width: 70%; margin: 0 auto;'><em>I M M I G R A T I <i class="fas fa-globe-americas"></i> N</em> is for everyone who is visiting the United States. It’s purpose is to provide information on other users experiences from their time spent in the country. Information such as business areas, tourist spots, hotels, restaurants ect. The app allows users to make posts and comment on them.</p>
+                  <%}%>
                 
 </body>
 </html>
